@@ -1,7 +1,16 @@
 header {
     height: 50px;
     width: 100%;
+    margin-bottom: 20px;
     color: aqua;
     text-align: center;
     background-image: linear-gradient(to right, red , yellow);
+}
+
+.container-fluid {
+    width: 100%;
+}
+
+.btn {
+    margin: 10px;
 }
