@@ -1,16 +1,37 @@
 header {
-    height: 50px;
-    width: 100%;
-    margin-bottom: 20px;
-    color: aqua;
-    text-align: center;
-    background-image: linear-gradient(to right, red , yellow);
+  height: 50px;
+  width: 100%;
+  margin-bottom: 20px;
+  color: aqua;
+  text-align: center;
+  background-image: linear-gradient(to right, red, yellow);
 }
 
-.container-fluid {
-    width: 100%;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.btn {
-    margin: 10px;
+#weatherCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.col-3 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 576px) {
+  .col-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .col-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
 }
