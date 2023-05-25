@@ -10,7 +10,8 @@ function getApi(city) {
       console.log(data);
       // Create today's weather card
       var todayCard = createWeatherCard(data);
-      document.getElementById("weatherCards").appendChild(todayCard);
+      document.getElementById("currentWeatherCard").innerHTML = ""; // Clear the container before adding the current weather card
+      document.getElementById("currentWeatherCard").appendChild(todayCard);
 
       // Fetch 5-day forecast data
       var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`;
@@ -22,10 +23,13 @@ function getApi(city) {
     .then(function (data) {
       console.log(data);
       // Create forecast weather cards
+      var forecastCardsContainer = document.getElementById("forecastCards");
+      forecastCardsContainer.innerHTML = ""; // Clear the container before adding forecast cards
+
       for (var i = 0; i < 5; i++) {
         var forecastData = data.list[i * 8]; // Every 8th item represents a forecast for a specific day
         var forecastCard = createWeatherCard(forecastData);
-        document.getElementById("weatherCards").appendChild(forecastCard);
+        forecastCardsContainer.appendChild(forecastCard);
       }
     });
 }
@@ -45,7 +49,7 @@ function createWeatherCard(data) {
   cardBodyContent.classList.add("card-body");
 
   var emoji = document.createElement("p");
-  emoji.innerText = "☀️"; // Add your logic to determine the emoji based on weather condition
+  emoji.innerText = getWeatherEmoji(data.weather[0].main);
 
   var temp = document.createElement("p");
   temp.innerText = data.main.temp + "°F";
@@ -67,6 +71,25 @@ function createWeatherCard(data) {
   card.appendChild(cardBody);
 
   return card;
+}
+
+function getWeatherEmoji(weather) {
+  switch (weather) {
+    case "Clear":
+      return "☀️";
+    case "Clouds":
+      return "☁️";
+    case "Rain":
+      return "🌧️";
+    case "Drizzle":
+      return "🌦️";
+    case "Thunderstorm":
+      return "⛈️";
+    case "Snow":
+      return "❄️";
+    default:
+      return "❓";
+  }
 }
 
 document
