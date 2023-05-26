@@ -103,6 +103,8 @@ document
     getApi(city);
   });
 
+// ...
+
 function createHistoryButton(city) {
   var button = document.createElement("button");
   button.classList.add("btn", "btn-primary", "mr-2");
@@ -131,3 +133,5 @@ document.getElementById("del-history").addEventListener("click", function () {
   var historyList = document.getElementById("historyList");
   historyList.innerHTML = "";
 });
+
+
