@@ -9,7 +9,7 @@ function getApi(city) {
     .then(function (data) {
       console.log(data);
 
-      var todayCard = createWeatherCard(data);
+      var todayCard = createWeatherCard(data, city);
       document.getElementById("currentWeatherCard").innerHTML = "";
       document.getElementById("currentWeatherCard").appendChild(todayCard);
 
@@ -32,7 +32,7 @@ function getApi(city) {
     });
 }
 
-function createWeatherCard(data) {
+function createWeatherCard(data, city) {
   var card = document.createElement("div");
   card.classList.add("col", "mb-4");
 
@@ -41,7 +41,12 @@ function createWeatherCard(data) {
 
   var cardHeader = document.createElement("div");
   cardHeader.classList.add("card-header");
-  cardHeader.innerText = new Date(data.dt * 1000).toDateString();
+
+  if (city) {
+    cardHeader.innerText = city; // Display the city name for current weather
+  } else {
+    cardHeader.innerText = new Date(data.dt * 1000).toDateString(); // Display the date for forecast
+  }
 
   var cardBodyContent = document.createElement("div");
   cardBodyContent.classList.add("card-body");
@@ -98,3 +103,31 @@ document
     getApi(city);
   });
 
+function createHistoryButton(city) {
+  var button = document.createElement("button");
+  button.classList.add("btn", "btn-primary", "mr-2");
+  button.innerText = city;
+
+  button.addEventListener("click", function () {
+    getApi(city);
+  });
+
+  return button;
+}
+
+document
+  .getElementById("searchForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+    var city = document.getElementById("cityInput").value;
+    getApi(city);
+
+    var historyList = document.getElementById("historyList");
+    var historyButton = createHistoryButton(city);
+    historyList.appendChild(historyButton);
+  });
+
+document.getElementById("del-history").addEventListener("click", function () {
+  var historyList = document.getElementById("historyList");
+  historyList.innerHTML = "";
+});

@@ -7,3 +7,16 @@ The goal of this project was to build an app that tells you the current weather 
 Just a Web browser to open the deployed github pages version of the application.
 
 ## sources
+
+clipart background photo: https://cbeditz.com/photo/5996/clipart-cloud-sky-background-full-hd-download
+
+Used this Stack overflow article to add the delete history button to the project:
+https://stackoverflow.com/questions/72910390/how-can-i-save-a-search-on-my-online-weather-app-by-using-localstorage-with-j
+
+## Future development
+
+I will be adding some better search functionality. For example, there's no way to be specific about the state, or country the city is in. If I search for my home city of ST George, UT the actual weather that displays is a city called St George in Australia. 
+
+There will be major changes to the CSS Styling for the next update. There was a time cruch to get the MVP deployed and so the CSS was the most rushed aspect of the first deployed version. 
+
+Deployed application

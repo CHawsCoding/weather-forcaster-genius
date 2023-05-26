@@ -1,3 +1,9 @@
+body {
+  background-image: url("./assets/clipart-cloud-sky-background-full-hd-download-11621551480ltakybzx7w.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 header {
   height: 50px;
   width: 100%;
@@ -34,4 +40,8 @@ header {
     flex: 0 0 75%;
     max-width: 75%;
   }
+}
+
+#searchBtn {
+  margin: 10px;
 }
