@@ -8,9 +8,9 @@ function getApi(city) {
     })
     .then(function (data) {
       console.log(data);
-      
+
       var todayCard = createWeatherCard(data);
-      document.getElementById("currentWeatherCard").innerHTML = ""; // Clear the container before adding the current weather card
+      document.getElementById("currentWeatherCard").innerHTML = "";
       document.getElementById("currentWeatherCard").appendChild(todayCard);
 
       var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`;
@@ -25,7 +25,7 @@ function getApi(city) {
       forecastCardsContainer.innerHTML = "";
 
       for (var i = 0; i < 5; i++) {
-        var forecastData = data.list[i * 8]; 
+        var forecastData = data.list[i * 8];
         var forecastCard = createWeatherCard(forecastData);
         forecastCardsContainer.appendChild(forecastCard);
       }
@@ -97,3 +97,4 @@ document
     var city = document.getElementById("cityInput").value;
     getApi(city);
   });
+
