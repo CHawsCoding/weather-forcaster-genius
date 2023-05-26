@@ -103,7 +103,6 @@ document
     getApi(city);
   });
 
-// ...
 
 function createHistoryButton(city) {
   var button = document.createElement("button");
